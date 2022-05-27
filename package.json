@@ -1,0 +1,13 @@
+{
+  "name": "microfrontend",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^5.0.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "publish": "lerna run tsc && lerna publish"
+  }
+}
