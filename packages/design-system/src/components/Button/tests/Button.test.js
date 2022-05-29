@@ -1,7 +1,7 @@
 import React from "react";
 import { screen, render } from "@testing-library/react";
 
-import { Button } from "../Button";
+import { Button } from "../";
 
 const props = { label: "Button" };
 

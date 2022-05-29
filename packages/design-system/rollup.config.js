@@ -11,14 +11,14 @@ export default {
     { file: pkg.module, format: "esm" },
   ],
   plugins: [
-    nodeResolve({
-      extensions: [".js", ".ts", ".tsx"],
-    }),
-    commonjs(),
     babel({
       babelHelpers: "bundled",
       exclude: "node_modules/**",
     }),
+    nodeResolve({
+      extensions: [".js", ".ts", ".tsx"],
+    }),
+    commonjs(),
     terser(),
   ],
   external: Object.keys(pkg.peerDependencies),
