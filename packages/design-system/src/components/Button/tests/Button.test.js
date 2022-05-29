@@ -1,25 +1,31 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { screen, render } from "@testing-library/react";
 
-import Button from "../Button";
+import { Button } from "../Button";
+
+const props = { label: "Button" };
 
 describe("Test Component", () => {
   const renderComponent = () => render(<Button {...props} />);
 
   it("should have primary className with default props", () => {
-    const { getByTestId } = renderComponent();
+    props.primary = true;
 
-    const testComponent = getByTestId("test-component");
+    renderComponent();
 
-    expect(testComponent).toHaveClass("test-component-primary");
+    expect(screen.getByTestId("button")).toHaveClass(
+      "storybook-button--primary"
+    );
   });
 
   it("should have secondary className with theme set as secondary", () => {
     props.theme = "secondary";
-    const { getByTestId } = renderComponent();
+    props.primary = false;
 
-    const testComponent = getByTestId("test-component");
+    renderComponent();
 
-    expect(testComponent).toHaveClass("test-component-secondary");
+    expect(screen.getByTestId("button")).toHaveClass(
+      "storybook-button--secondary"
+    );
   });
 });
