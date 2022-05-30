@@ -3,7 +3,13 @@ import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import image from "@rollup/plugin-image";
 import { terser } from "rollup-plugin-terser";
+
 import pkg from "./package.json";
+
+const dependencies = [
+  ...Object.keys(pkg.peerDependencies),
+  ...Object.keys(pkg.devDependencies),
+];
 
 export default {
   input: "src/index.js",
@@ -23,5 +29,5 @@ export default {
     terser(),
     image(),
   ],
-  external: Object.keys(pkg.peerDependencies),
+  external: [...dependencies],
 };
