@@ -8,6 +8,6 @@
     "packages/*"
   ],
   "scripts": {
-    "publish": "lerna run tsc && lerna publish"
+    "publish": "lerna publish"
   }
 }
