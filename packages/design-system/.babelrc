@@ -11,5 +11,6 @@
             ["@babel/preset-env", { "modules": false }]
           ]
        }
-    }
+    },
+    "plugins": [["module-resolver", {"root": ["./src"]}]]
   }
