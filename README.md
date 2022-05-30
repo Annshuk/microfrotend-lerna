@@ -1,2 +1,1 @@
-# microfrotend
-micro front end with craco
+# Micro front end with Lerna and craco
