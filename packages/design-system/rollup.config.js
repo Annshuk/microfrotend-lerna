@@ -27,7 +27,7 @@ export default {
     }),
     commonjs(),
     image(),
-    //  terser(),
+    terser(),
   ],
   external: [...dependencies],
 };
