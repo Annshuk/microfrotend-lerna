@@ -1,5 +1,5 @@
 {
-  "name": "design-system",
+  "name": "design-components-react",
   "version": "0.1.0",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -51,6 +51,8 @@
     "build": "npm run build:js",
     "build:js": "rollup -c rollup.config.js",
     "test": "jest",
-    "test:watch": "jest --watch"
-  }
+    "test:watch": "jest --watch",
+    "publish": "npm publish"
+  },
+  "publishConfig": {}
 }
