@@ -12,5 +12,12 @@
           ]
        }
     },
-    "plugins": [["module-resolver", {"root": ["./src"]}]]
+    "plugins": [[
+      "babel-plugin-module-resolver",
+      {
+        "root": [
+          "./src"
+        ]
+      }
+    ]]
   }

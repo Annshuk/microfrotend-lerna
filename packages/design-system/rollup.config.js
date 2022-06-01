@@ -2,6 +2,7 @@ import babel from "@rollup/plugin-babel";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import image from "@rollup/plugin-image";
+import replace from "@rollup/plugin-replace";
 import { terser } from "rollup-plugin-terser";
 
 import pkg from "./package.json";
@@ -18,16 +19,15 @@ export default {
     { file: pkg.module, format: "esm", sourcemap: true },
   ],
   plugins: [
-    nodeResolve({
-      extensions: [".js", ".ts", ".tsx"],
-    }),
-    commonjs(),
+    replace({ exclude: "node_modules/**", preventAssignment: true }),
+    nodeResolve(),
     babel({
       babelHelpers: "bundled",
       exclude: "node_modules/**",
     }),
+    commonjs(),
     image(),
-    terser(),
+    //  terser(),
   ],
   external: [...dependencies],
 };

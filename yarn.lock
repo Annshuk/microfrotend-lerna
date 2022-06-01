@@ -2966,6 +2966,14 @@
     "@rollup/pluginutils" "^3.1.0"
     "magic-string" "^0.25.7"
 
+"@rollup/plugin-replace@^4.0.0":
+  "integrity" "sha512-+rumQFiaNac9y64OHtkHGmdjm7us9bo1PlbgQfdihQtuNxzjpaB064HbRnewUOggLQxVCCyINfStkgmBeQpv1g=="
+  "resolved" "https://registry.npmjs.org/@rollup/plugin-replace/-/plugin-replace-4.0.0.tgz"
+  "version" "4.0.0"
+  dependencies:
+    "@rollup/pluginutils" "^3.1.0"
+    "magic-string" "^0.25.7"
+
 "@rollup/pluginutils@^3.1.0":
   "integrity" "sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg=="
   "resolved" "https://registry.npmjs.org/@rollup/pluginutils/-/pluginutils-3.1.0.tgz"
@@ -7751,7 +7759,7 @@
     "inherits" "^2.0.1"
     "minimalistic-assert" "^1.0.0"
 
-"design-system@file:F:\\microfontend-poc\\craco\\test\\microfrotend\\packages\\design-system":
+"design-components-react@file:F:\\microfontend-poc\\craco\\test\\microfrotend\\packages\\design-system":
   "resolved" "file:packages/design-system"
   "version" "0.1.0"
 
