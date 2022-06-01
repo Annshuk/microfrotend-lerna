@@ -15,8 +15,8 @@ const dependencies = [
 export default {
   input: "src/index.js",
   output: [
-    { file: pkg.main, format: "cjs", sourcemap: true },
-    { file: pkg.module, format: "esm", sourcemap: true },
+    { file: pkg.main, format: "cjs" },
+    { file: pkg.module, format: "esm" },
   ],
   plugins: [
     replace({ exclude: "node_modules/**", preventAssignment: true }),
@@ -27,7 +27,7 @@ export default {
     }),
     commonjs(),
     image(),
-    terser(),
+    //  terser(),
   ],
   external: [...dependencies],
 };
