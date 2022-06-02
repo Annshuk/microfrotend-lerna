@@ -3,6 +3,7 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import image from '@rollup/plugin-image';
 import replace from '@rollup/plugin-replace';
+import eslint from '@rollup/plugin-eslint';
 import { terser } from 'rollup-plugin-terser';
 
 import pkg from './package.json';
@@ -19,15 +20,16 @@ export default {
 		{ file: pkg.module, format: 'esm' },
 	],
 	plugins: [
+		commonjs({
+			ignoreGlobal: true,
+			include: /node_modules/,
+		}),
 		replace({ exclude: 'node_modules/**', preventAssignment: true }),
+		eslint({ exclude: /(node_modules)/ }),
 		nodeResolve(),
 		babel({
 			babelHelpers: 'bundled',
 			exclude: 'node_modules/**',
-		}),
-		commonjs({
-			ignoreGlobal: true,
-			include: /node_modules/,
 		}),
 		image(),
 		//  terser(),

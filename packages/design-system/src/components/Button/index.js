@@ -4,7 +4,13 @@ import PropTypes from 'prop-types';
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
+export const Button = ({
+	primary = true,
+	backgroundColor,
+	size = 'medium',
+	label,
+	...rest
+}) => {
 	const mode = primary
 		? 'storybook-button--primary'
 		: 'storybook-button--secondary';
@@ -17,7 +23,7 @@ export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
 				' '
 			)}
 			style={backgroundColor && { backgroundColor }}
-			{...props}>
+			{...rest}>
 			{label}
 		</button>
 	);
@@ -44,11 +50,4 @@ Button.propTypes = {
 	 * Optional click handler
 	 */
 	onClick: PropTypes.func,
-};
-
-Button.defaultProps = {
-	backgroundColor: null,
-	primary: false,
-	size: 'medium',
-	onClick: undefined,
 };
