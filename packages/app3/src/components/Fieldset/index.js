@@ -6,5 +6,5 @@ export const Fieldset = styled.fieldset`
  border: 0;
 
  border-bottom:1px grey solid;
- padding:20px 0;
+ padding:0 0 20px;
 `

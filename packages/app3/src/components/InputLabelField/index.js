@@ -1,3 +1,5 @@
+import { forwardRef } from 'react'
+import { useFormContext } from 'react-hook-form'
 import { Input, Label, FormGroup, Col, FormFeedback } from 'reactstrap'
 
 
@@ -6,26 +8,31 @@ import { Input, Label, FormGroup, Col, FormFeedback } from 'reactstrap'
  * input label field
  * 
  */
-export const InputLabelField = ({ label, name, id, errors, ...rest }) => <FormGroup row>
-    <Label
-        for={ id }
+export const InputLabelField = forwardRef(({ label, id, name, errors, ...rest }, ref) => {
+    const { register } = useFormContext()
 
-    >
-        { label }
-    </Label>
-    <Col>
-        <Input
-            id={ id }
-            name={ name }
-            type="text"
-            { ...rest }
+    return (<FormGroup row>
+        <Label
+            for={ id }
 
-        />
-        { errors && <FormFeedback>
-            You will not be able to see this
-        </FormFeedback>
-        }
-    </Col>
-</FormGroup>
+        >
+            { label }
+        </Label>
+        <Col>
+            <Input
+                { ...register(name, { required: true }) }
+                type="text"
+                ref={ ref }
+                id={ id }
+                { ...rest }
 
+            />
+            { errors && <FormFeedback>
+                You will not be able to see this
+            </FormFeedback>
+            }
+        </Col>
+    </FormGroup>
+    )
+})
 
