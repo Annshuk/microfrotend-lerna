@@ -1,9 +1,10 @@
 
-import { Form, Col, Row } from 'reactstrap'
+import { Form, Col, Row, } from 'reactstrap'
 import { InputLabelField } from "../components/InputLabelField"
 
 export const EditPayment = () => {
     return <Form>
+
         <Row>
             <Col md={ 6 }>
                 <InputLabelField label="Credit Transaction Date" type="datetime-local" name="CreDtTm" id="CreDtTm" placeholder="Date" />
@@ -15,7 +16,7 @@ export const EditPayment = () => {
         <Row>
             <Col md={ 6 }>
                 <InputLabelField label="Payment Initiator Country" type="select" id="Ctry" name="Ctry">
-                    <option selected>Choose...</option>
+                    <option>Choose...</option>
                     <option value="1">India</option>
                     <option value="2">US</option>
                     <option value="3">UK</option>
