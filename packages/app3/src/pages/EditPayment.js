@@ -1,10 +1,12 @@
 
 import { Form, Col, Row, } from 'reactstrap'
 import { InputLabelField } from "../components/InputLabelField"
+import { Heading } from '../components/Typography/Heading'
 
 export const EditPayment = () => {
-    return <Form>
 
+    return <Form>
+        <Heading title="Creditor Details" variant='h1' />
         <Row>
             <Col md={ 6 }>
                 <InputLabelField label="Credit Transaction Date" type="datetime-local" name="CreDtTm" id="CreDtTm" placeholder="Date" />
