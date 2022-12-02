@@ -1,8 +1,8 @@
 import React from "react";
+
 import "./App.css";
 //@ts-expect-error
 import Button from "app3/Button";
-import styled from "styled-components";
 
 import Button2 from "./Button2";
 
@@ -18,8 +18,5 @@ function App() {
   );
 }
 
-const StyledButton = styled(Button)`
-  color: blue;
-`;
 
 export default App;

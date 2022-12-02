@@ -3,7 +3,7 @@
 exports[`Test Component should match the snapshot 1`] = `
 <div>
   <button
-    class="storybook-button storybook-button--medium storybook-button--primary"
+    className="storybook-button storybook-button--medium storybook-button--primary"
     data-testid="button"
     type="button"
   >
