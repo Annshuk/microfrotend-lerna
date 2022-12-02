@@ -4,8 +4,7 @@ import clsx from 'clsx'
 
 const SectionTitle = styled.div`
  font-weight: 600;
- line-height:1.5;
- margin-bottom:10px;
+ margin:10px 0;
  
  &.h1{
     font-size: 18px;
