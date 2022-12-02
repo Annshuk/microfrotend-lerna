@@ -71,14 +71,14 @@ export const EditPayment = () => {
                     <InputLabelField label="Account" aria-label="Amount (to the nearest dollar)" name="account" id="account" />
                 </Col>
                 <Col md={ 6 }>
-
+                    <InputLabelField label="Remittance Information" id="transcationMessage" readonly placeholder="Unstructured Remittance Information" />
                 </Col>
             </Row>
         </Fieldset>
 
 
         <Fieldset>
-            <Heading title="Creditor Details" variant='h1' />
+            <Heading title="Customer Credit Transfer Details" variant='h1' />
             <Row>
                 <Col md={ 6 }>
                     <InputLabelField label="Credit Transaction Date" type="datetime-local" name="CreDtTm" id="CreDtTm" placeholder="Date" />
