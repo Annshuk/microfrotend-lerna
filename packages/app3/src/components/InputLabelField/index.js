@@ -8,24 +8,16 @@ import { Input, Label, FormGroup, Col, FormFeedback } from 'reactstrap'
  * input label field
  * 
  */
-export const InputLabelField = forwardRef(({ label, id, name, errors, ...rest }, ref) => {
-    const { register } = useFormContext()
-
+export const InputLabelField = forwardRef(({ name, label, id, errors, ...rest }, ref) => {
     return (<FormGroup row>
-        <Label
-            for={ id }
-
-        >
-            { label }
-        </Label>
+        <Label for={ id }>{ label }</Label>
         <Col>
             <Input
-                { ...register(name, { required: true }) }
                 type="text"
-                ref={ ref }
+                name={ name }
+                innerRef={ ref }
                 id={ id }
                 { ...rest }
-
             />
             { errors && <FormFeedback>
                 You will not be able to see this

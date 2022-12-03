@@ -2,10 +2,8 @@
 
 import { Container } from 'reactstrap';
 import { QueryClientProvider, QueryClient } from 'react-query';
-import './App.css';
-import './Payment.css';
 
-import { EditPayment } from './pages/EditPayment';
+import { EditPayment } from '../pages/EditPayment';
 
 const queryClient = new QueryClient({
 	defaultOptions: {

@@ -1,6 +1,4 @@
 import { forwardRef } from 'react'
-import { useFormContext } from 'react-hook-form'
-
 import { Input, Label, FormGroup, Col, FormFeedback } from 'reactstrap'
 
 
@@ -10,10 +8,6 @@ import { Input, Label, FormGroup, Col, FormFeedback } from 'reactstrap'
  * 
  */
 export const Checkbox = forwardRef(({ label, name, id, errors, ...rest }, ref) => {
-    const { register } = useFormContext();
-
-    console.warn("dg")
-
     return <FormGroup check>
         <Label
             check
@@ -23,7 +17,7 @@ export const Checkbox = forwardRef(({ label, name, id, errors, ...rest }, ref) =
         </Label>
         <Col sm={ 10 }>
             <Input
-                { ...register(name, { required: true }) }
+                innerRef={ ref }
                 id={ id }
                 type="checkbox"
                 { ...rest }
