@@ -1,17 +1,20 @@
 
-import { Form, Col, Row, Button } from 'reactstrap'
-import { useForm, FormProvider } from 'react-hook-form'
+import { Form, Col, Row, Button } from 'reactstrap';
+import { useForm, FormProvider } from 'react-hook-form';
+import { useQuery } from 'react-query';
 
 import { InputLabelField } from "../components/InputLabelField"
 import { Heading } from '../components/Typography/Heading'
 import { Fieldset } from '../components/Fieldset'
-import { Checkbox } from '../components/Checkbox'
+import { Checkbox } from '../components/Checkbox';
+
+import { getQuery } from '../services/getQuery'
 
 export const EditPayment = () => {
-    const formProps = useForm();
+    const { data: payments } = useQuery('payments', getQuery);
+    const formProps = useForm({ defaultValues: payments });
 
     const { handleSubmit, register } = formProps;
-
 
     const onSubmit = (formValue) => {
         console.warn(formValue)
@@ -56,7 +59,7 @@ export const EditPayment = () => {
             <Fieldset>
                 <Heading title="Credit Transfer Details" variant='h2' />
                 <Row>
-                    <Checkbox label="Batch Booking"  { ...register('btchBookg') } id="btchBookg" />
+                    <Checkbox label="Batch Booking"  { ...register('BtchBookg') } id="btchBookg" />
                 </Row>
                 <Row>
                     <Col md={ 6 }>
