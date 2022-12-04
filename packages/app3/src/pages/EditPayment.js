@@ -2,6 +2,7 @@
 import { Form, Col, Row, Button } from 'reactstrap';
 import { useForm, FormProvider } from 'react-hook-form';
 import { useQuery } from 'react-query';
+import { Box, Flex } from 'rebass'
 
 import { InputLabelField } from "../components/InputLabelField"
 import { Heading } from '../components/Typography/Heading'
@@ -20,7 +21,7 @@ export const EditPayment = () => {
         console.warn(formValue)
     }
 
-    return <Form>
+    return <Box as={ Form } py="20px">
         <FormProvider { ...formProps }>
             <Fieldset>
                 <Heading title="Customer Credit Transfer Details" variant='h1' />
@@ -153,14 +154,17 @@ export const EditPayment = () => {
                     </Col>
                 </Row>
             </Fieldset>
-            <Button
-                color="primary"
-                onClick={ handleSubmit(onSubmit) }
-            >
-                Click Me
-            </Button>
+            <Flex my="10px" justifyContent="end">
+                <Button
+                    color="primary"
+                    onClick={ handleSubmit(onSubmit) }
+                >
+                    Next
+                </Button>
+            </Flex>
+
         </FormProvider>
 
-    </Form>
+    </Box>
 
 }
