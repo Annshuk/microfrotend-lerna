@@ -155,8 +155,6 @@ const makePayload = ({
     }
 }
 
-
-
 export const postQuery = async (payload) => {
     const data = makePayload(payload)
     try {

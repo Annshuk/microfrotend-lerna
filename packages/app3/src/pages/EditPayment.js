@@ -13,14 +13,14 @@ import { getQuery, postQuery } from '../services'
 
 export const EditPayment = () => {
     const { data: payments } = useQuery('payments', getQuery);
-    const { mutate, error, isError, data } = useMutation(postQuery)
+    const { mutate, isError, data } = useMutation(postQuery)
+
     const formProps = useForm({ defaultValues: payments });
 
     const { handleSubmit, register } = formProps;
 
     const onSubmit = (formValue) => {
         mutate(formValue)
-        console.warn(payments)
     }
 
     console.warn(data)
