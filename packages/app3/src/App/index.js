@@ -2,6 +2,7 @@
 
 import { Container } from 'reactstrap';
 import { QueryClientProvider, QueryClient } from 'react-query';
+import { RecoilRoot } from 'recoil';
 
 import { EditPayment } from '../pages/EditPayment';
 
@@ -17,9 +18,11 @@ const queryClient = new QueryClient({
 const App = () => {
 	return (
 		<QueryClientProvider client={ queryClient }>
-			<Container>
+			<RecoilRoot><Container>
 				<EditPayment />
 			</Container>
+			</RecoilRoot>
+
 		</QueryClientProvider>
 	);
 }

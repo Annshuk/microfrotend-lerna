@@ -20,10 +20,12 @@ export const EditPayment = () => {
     const { handleSubmit, register } = formProps;
 
     const onSubmit = (formValue) => {
+
+        console.warn(data)
+
+        //mutate once all valued filled
         mutate(formValue)
     }
-
-    console.warn(data)
 
     return <Box as={ Form } py="20px">
         { isError && <Alert color="danger">
