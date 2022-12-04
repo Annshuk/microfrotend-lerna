@@ -1,7 +1,7 @@
 
-import { Form, Col, Row, Button } from 'reactstrap';
+import { Form, Col, Row, Button, Alert } from 'reactstrap';
 import { useForm, FormProvider } from 'react-hook-form';
-import { useQuery } from 'react-query';
+import { useQuery, useMutation } from 'react-query';
 import { Box, Flex } from 'rebass'
 
 import { InputLabelField } from "../components/InputLabelField"
@@ -9,19 +9,26 @@ import { Heading } from '../components/Typography/Heading'
 import { Fieldset } from '../components/Fieldset'
 import { Checkbox } from '../components/Checkbox';
 
-import { getQuery } from '../services/getQuery'
+import { getQuery, postQuery } from '../services'
 
 export const EditPayment = () => {
     const { data: payments } = useQuery('payments', getQuery);
+    const { mutate, error, isError, data } = useMutation(postQuery)
     const formProps = useForm({ defaultValues: payments });
 
     const { handleSubmit, register } = formProps;
 
     const onSubmit = (formValue) => {
-        console.warn(formValue)
+        mutate(formValue)
+        console.warn(payments)
     }
 
+    console.warn(data)
+
     return <Box as={ Form } py="20px">
+        { isError && <Alert color="danger">
+            This is a primary alert — check it out!
+        </Alert> }
         <FormProvider { ...formProps }>
             <Fieldset>
                 <Heading title="Customer Credit Transfer Details" variant='h1' />
