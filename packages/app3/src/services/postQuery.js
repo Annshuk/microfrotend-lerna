@@ -8,14 +8,14 @@ const makePayload = ({
     Nm = "Initiators Name",
     NbOfTxs = 2,
     MsgId = "unique-Message-ID-1799566",
-    btchBookg = "true",
-    creatorName = "",
-    financialInit = "",
-    creditorAccount = "",
-    paymentID = "",
-    account = "",
-    transcationMessage = "",
-    categoryPurpose = "",
+    BtchBookg = false,
+    creatorName = "Creditor Name",
+    financialInit = "SPUEUS2UXXX",
+    creditorAccount = "DE21500500009876543210",
+    paymentID = "OriginatorID1234",
+    account = "2543.44",
+    transcationMessage = "Unstructured Remittance Information",
+    categoryPurpose = "SAL",
     serviceLevel = "",
     debitorAccount = "",
     requiredExedate = "",
@@ -43,112 +43,78 @@ const makePayload = ({
                     MsgId
                 },
                 PmtInf: {
-                    BtchBookg: btchBookg,
+                    BtchBookg: BtchBookg,
                     "CdtTrfTxInf": [
                         {
                             "Cdtr": {
-                                "Nm": "Creditor Name"
+                                "Nm":  creatorName
                             },
                             "CdtrAgt": {
                                 "FinInstnId": {
-                                    "BICFI": "SPUEUS2UXXX"
+                                    "BICFI": financialInit
                                 }
                             },
                             "CdtrAcct": {
                                 "Id": {
-                                    "IBAN": "DE21500500009876543210"
+                                    "IBAN": creditorAccount
                                 }
                             },
                             "PmtId": {
-                                "EndToEndId": "OriginatorID1234"
+                                "EndToEndId": paymentID
                             },
                             "Amt": {
                                 "InstdAmt": {
-                                    "#text": "2543.44",
+                                    "#text": account,
                                     "-Ccy": "EUR"
                                 }
                             },
                             "RmtInf": {
-                                "Ustrd": "Unstructured Remittance Information"
-                            }
-                        },
-
-                        {
-                            "Cdtr": {
-                                "Nm": "Other Creditor Name"
-                            },
-
-                            "CdtrAgt": {
-                                "FinInstnId": {
-                                    "BICFI": "SPUEUS2UXXX"
-                                }
-                            },
-
-                            "CdtrAcct": {
-                                "Id": {
-                                    "IBAN": "DE21500500001234567897"
-                                }
-                            },
-
-                            "PmtId": {
-                                "EndToEndId": "OriginatorID1235"
-                            },
-
-                            "Amt": {
-                                "InstdAmt": {
-                                    "#text": "112.72",
-
-                                    "-Ccy": "EUR"
-                                }
-                            },
-
-                            "RmtInf": {
-                                "Ustrd": "Unstructured Remittance Information"
+                                "Ustrd": transcationMessage
                             }
                         }
                     ],
 
                     "PmtTpInf": {
                         "CtgyPurp": {
-                            "Cd": "SAL"
+                            "Cd": categoryPurpose
                         },
 
                         "SvcLvl": {
-                            "Cd": "SEPA"
+                            "Cd": serviceLevel
                         }
                     },
 
                     "DbtrAcct": {
                         "Id": {
-                            "IBAN": "DE87200500001234567890"
+                            "IBAN": debitorAccount
                         }
                     },
 
-                    "ReqdExctnDt": "2010-11-25",
+                    "ReqdExctnDt": requiredExedate,
 
                     "DbtrAgt": {
                         "FinInstnId": {
-                            "BICFI": "BANKUSFFXXX"
+                            "BICFI": debitorInstId
                         }
                     },
 
-                    "ChrgBr": "SLEV",
+                    "ChrgBr": chargeInfo,
 
-                    "PmtInfId": "Payment-Information-ID-48133",
+                    "PmtInfId": paymentInformationID,
 
-                    "CtrlSum": "1500.00",
+                    "CtrlSum": controlSum,
 
                     "Dbtr": {
                         "PstlAdr": {
-                            "Ctry": "India"
+                            "Ctry": debitorCountry
                         },
 
-                        "Nm": "John"
+                        "Nm": debitorName
                     },
 
-                    "NbOfTxs": "2",
+                    "NbOfTxs": paymentNoOfTranscation,
 
-                    "PmtMtd": "TRF"
+                    "PmtMtd": paymentMethods
                 }
             }
         }
@@ -158,7 +124,8 @@ const makePayload = ({
 export const postQuery = async (payload) => {
     const data = makePayload(payload)
     try {
-        const request = await axios.post('http://ec2-18-236-230-212.us-west-2.compute.amazonaws.com:5000/api/workflow/payment_orchestration', data);
+        //const request = await axios.post('http://ec2-18-236-230-212.us-west-2.compute.amazonaws.com:5000/api/workflow/payment_orchestration', data);
+        const request = await axios.post('https://ja4d9gh6aj.execute-api.us-west-2.amazonaws.com/Dev1/jsonconductor', data);
         return request
     } catch (error) {
         return new Error(error)
