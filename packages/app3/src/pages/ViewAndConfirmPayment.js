@@ -1,8 +1,8 @@
+import React, { useState } from 'react';
 import { Form, Col, Row, Button, Alert } from 'reactstrap';
 import { useForm, useFieldArray, FormProvider } from 'react-hook-form';
 import { useQuery, useMutation  } from 'react-query';
 import { Box, Flex } from 'rebass';
-
 import {
   atom,
   useRecoilState,
@@ -13,6 +13,7 @@ import { InputLabelReadonlyField } from "../components/InputLabelReadonlyField";
 import { Heading } from '../components/Typography/Heading';
 import { Fieldset } from '../components/Fieldset';
 import { Checkbox } from '../components/Checkbox';
+import { Loader } from '../components/Loader';
 import { CreditTransferDetailsComponent } from '../components/CreditTransferDetailsComponent';
 
 import { getQuery, postQuery, convertDateToIso, convertIsoDateToLocal } from '../services';
@@ -23,26 +24,34 @@ import { appState } from '../recoils/atoms';
 export const ViewAndConfirmPayment = () => {
 	
 	const [appDefaultData, setAppDefaultData] = useRecoilState(appState);
+	
 	console.log("updated value", appDefaultData);	
 	console.log("setAppDefaultData", appDefaultData);
 
     const formProps = useForm({ defaultValues: appDefaultData });		
-    const { mutate, isError, data } = useMutation(postQuery);	
     const { control, handleSubmit, register } = formProps;			
 
+    const { mutate , isLoading ,isIdle , isError, isSuccess , data } = useMutation(postQuery);	
     const onSubmit = (formValue) => {
-
         console.warn("postData", formValue);
 		formValue.CreDtTm = convertDateToIso(formValue.CreDtTm);
 		
         //mutate once all valued filled
-        mutate(formValue)
+        mutate(formValue);
+		
+		console.log("mutate.isLoading => ", isLoading );
+		console.log("mutate.isIdle => ", isIdle );
+		console.log("mutate.isError => ", isError );
+		console.log("mutate.isSuccess  => ", isSuccess  );
     }
 
     return <Box as={ Form } py="20px">
+	
         { isError && <Alert color="danger">
-            This is a primary alert — check it out!
-        </Alert> }
+						Payment gateway error... 
+					</Alert> 
+		}
+		
         <FormProvider { ...formProps }>
             <Fieldset>
                 <Heading title="Customer Credit Transfer Details" variant='h1' />
@@ -176,8 +185,8 @@ export const ViewAndConfirmPayment = () => {
                 </Button>
             </Flex>
 
+			<Loader toggle={false} modal={isLoading} />			
         </FormProvider>
-
     </Box>
 
 }
