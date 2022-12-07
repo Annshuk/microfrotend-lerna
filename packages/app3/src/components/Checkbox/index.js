@@ -9,13 +9,6 @@ import { useState } from 'react';
  */
 export const Checkbox = forwardRef(({ label, name, id, errors, checked, ...rest }, ref) => {
 	
-  const defaultChecked = checked ? checked : false;
-  const [isChecked, setIsChecked] = useState(defaultChecked);
-  
-  console.log("defaultChecked", defaultChecked);
-  console.log("isChecked", isChecked);
-  console.log("rest", rest);
-	
     return <FormGroup check>
         <Label
             check
@@ -28,8 +21,6 @@ export const Checkbox = forwardRef(({ label, name, id, errors, checked, ...rest 
                 innerRef={ ref }
                 id={ id }
                 type="checkbox"
-				checked={isChecked}
-				onChange={() => setIsChecked((prev) => !prev)}
                 { ...rest }
             />
             { label }

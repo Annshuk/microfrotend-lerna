@@ -4,7 +4,7 @@ import uuid from 'react-uuid';
 export const appState = atom({
 	  key: 'appState', // unique ID (with respect to other atoms/selectors)
 	  default: {
-		CreDtTm : "2022-09-14T09:30:47.000Z",
+		CreDtTm : "2022-09-14T09:30",
 		CtrlSum :"50000",
 		Ctry: "India",
 		Nm : "Initiators Name",

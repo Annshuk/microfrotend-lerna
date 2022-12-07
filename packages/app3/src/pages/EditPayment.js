@@ -186,7 +186,7 @@ export const EditPayment = () => {
                     color="primary"
                     onClick={ handleSubmit(onSubmit) }
                 >
-                    Next
+                    Confirm
                 </Button>
             </Flex>
 

@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const makePayload = ({
-    CreDtTm = "2022-09-14T09:30:47.000Z",
+    CreDtTm = "2022-09-14T09:30",
     CtrlSum = "50000",
     Ctry = "India",
     Nm = "Initiators Name",

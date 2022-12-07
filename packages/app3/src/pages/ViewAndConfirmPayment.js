@@ -18,11 +18,11 @@ import { CreditTransferDetailsComponent } from '../components/CreditTransferDeta
 
 import { getQuery, postQuery, convertDateToIso, convertIsoDateToLocal } from '../services';
 import { appState } from '../recoils/atoms';
-
+import { useNavigate } from "react-router-dom";
 
 
 export const ViewAndConfirmPayment = () => {
-	
+		const navigate = useNavigate();
 	const [appDefaultData, setAppDefaultData] = useRecoilState(appState);
 	
 	console.log("updated value", appDefaultData);	
@@ -43,6 +43,10 @@ export const ViewAndConfirmPayment = () => {
 		console.log("mutate.isIdle => ", isIdle );
 		console.log("mutate.isError => ", isError );
 		console.log("mutate.isSuccess  => ", isSuccess  );
+    }
+	
+   const handleBack = (formValue) => {		
+        navigate("/");
     }
 
     return <Box as={ Form } py="20px">
@@ -86,7 +90,7 @@ export const ViewAndConfirmPayment = () => {
 			<Fieldset >
                 <Heading title="Credit Transfer Details" variant='h2' />
                 <Row>
-                    <Checkbox label="Batch Booking"  { ...register('BtchBookg') } id="BtchBookg" name="BtchBookg" />
+                    <InputLabelReadonlyField label="Batch Booking"  { ...register('BtchBookg') } id="BtchBookg" name="BtchBookg" type="checkbox" />
                 </Row>
                 <Row>
                     <Col md={ 6 }>
@@ -176,13 +180,9 @@ export const ViewAndConfirmPayment = () => {
                     </Col>
                 </Row>
             </Fieldset>
-            <Flex my="10px" justifyContent="end">
-                <Button
-                    color="primary"
-                    onClick={ handleSubmit(onSubmit) }
-                >
-                    Confirm and Submit
-                </Button>
+			<Flex my="10px" justifyContent="end">
+				<Button color="secondary" className="back m-3 me-auto" onClick={ handleBack }>Back</Button>
+				<Button color="primary" className="back m-3" onClick={ handleSubmit(onSubmit) }>Submit</Button>                
             </Flex>
 
 			<Loader modal={isLoading} />			
