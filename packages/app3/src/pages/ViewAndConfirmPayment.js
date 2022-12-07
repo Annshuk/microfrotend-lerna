@@ -14,6 +14,7 @@ import { Heading } from '../components/Typography/Heading';
 import { Fieldset } from '../components/Fieldset';
 import { CheckboxReadonly } from '../components/CheckboxReadonly';
 import { Loader } from '../components/Loader';
+import { SuccessNotification } from '../components/Notification';
 import { CreditTransferDetailsComponent } from '../components/CreditTransferDetailsComponent';
 
 import { getQuery, postQuery, convertDateToIso, convertIsoDateToLocal } from '../services';
@@ -55,6 +56,10 @@ export const ViewAndConfirmPayment = () => {
 						Payment gateway error... 
 					</Alert> 
 		}
+		{ isSuccess && <SuccessNotification modal={true}></SuccessNotification> 
+		}
+		
+		
 		
         <FormProvider { ...formProps }>
             <Fieldset>
@@ -87,7 +92,7 @@ export const ViewAndConfirmPayment = () => {
 
             <Heading title="Payment Information" variant='h1' />            
 			
-			<Fieldset >
+			<Fieldset>
                 <Heading title="Credit Transfer Details" variant='h2' />
                 <Row>
                     <CheckboxReadonly label="Batch Booking" checked={appDefaultData.BtchBookg}   { ...register('BtchBookg') } id="BtchBookg" name="BtchBookg" />
