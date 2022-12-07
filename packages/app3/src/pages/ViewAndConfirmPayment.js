@@ -185,7 +185,7 @@ export const ViewAndConfirmPayment = () => {
                 </Button>
             </Flex>
 
-			<Loader toggle={false} modal={isLoading} />			
+			<Loader modal={isLoading} />			
         </FormProvider>
     </Box>
 
