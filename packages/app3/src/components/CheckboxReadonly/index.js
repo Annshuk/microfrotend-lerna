@@ -17,23 +17,14 @@ export const CheckboxReadonly = forwardRef(({ label, name, id, errors, checked, 
 
         </Label>
         <Col sm={ 10 } className="p-2">
-            {checked && <Input
+            <Input
                 innerRef={ ref }
-                id={ id }
-				checked
-                type="checkbox"
-				disabled
-                { ...rest }
-            />}
-			
-			{!checked && <Input
-                innerRef={ ref }
+                name={ name }
                 id={ id }
                 type="checkbox"
 				disabled
                 { ...rest }
-            />}
-			
+            />			
             { label }
 
             { errors && <FormFeedback>

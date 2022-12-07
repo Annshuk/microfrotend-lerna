@@ -14,7 +14,7 @@ export const makePayload = () => ({
                 "MsgId": "Message-ID-1799566"
             },
             "PmtInf": {
-                "BtchBookg": false,
+                "BtchBookg": true,
                 "CdtTrfTxInf": [
                     {
                         "Cdtr": {

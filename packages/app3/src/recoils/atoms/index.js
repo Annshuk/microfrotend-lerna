@@ -10,7 +10,7 @@ export const appState = atom({
 		Nm : "Initiators Name",
 		NbOfTxs : 2,
 		MsgId : uuid(),
-		BtchBookg: false,
+		BtchBookg: true,
 		creatorName : "Creditor Name",
 		financialInit : "SPUEUS2UXXX",
 		creditorAccount : "DE21500500009876543210",

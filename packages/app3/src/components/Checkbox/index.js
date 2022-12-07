@@ -18,20 +18,13 @@ export const Checkbox = forwardRef(({ label, name, id, errors, checked, ...rest 
         </Label>
         <Col sm={ 10 } className="p-2">
             
-			{ checked && <Input
+			<Input
                 innerRef={ ref }
-                id={ id }
-				checked
-                type="checkbox"
-                { ...rest }
-            />}
-			
-			{ !checked && <Input
-                innerRef={ ref }
+                name={ name }
                 id={ id }
                 type="checkbox"
                 { ...rest }
-            />}
+            />
 			
             { label }
 
