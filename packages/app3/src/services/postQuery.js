@@ -30,97 +30,100 @@ const makePayload = ({
 	}) => {
 		
     return {
-        Document: {
-            CstmrCdtTrfInitn: {
-                GrpHdr: {
-                    CreDtTm,
-                    CtrlSum,
-                    InitgPty: {
-                        PstlAdr: {
-                            Ctry
-                        },
-                        Nm
-                    },
-                    NbOfTxs,
-                    MsgId
-                },
-                PmtInf: {
-                    "BtchBookg": BtchBookg,
-                    "CdtTrfTxInf": [
-                        {
-                            "Cdtr": {
-                                "Nm":  creatorName
-                            },
-                            "CdtrAgt": {
-                                "FinInstnId": {
-                                    "BICFI": financialInit
-                                }
-                            },
-                            "CdtrAcct": {
-                                "Id": {
-                                    "IBAN": creditorAccount
-                                }
-                            },
-                            "PmtId": {
-                                "EndToEndId": paymentID
-                            },
-                            "Amt": {
-                                "InstdAmt": {
-                                    "#text": account,
-                                    "-Ccy": "EUR"
-                                }
-                            },
-                            "RmtInf": {
-                                "Ustrd": transcationMessage
-                            }
-                        }
-                    ],
+			"Body": {	
+			  Document: {
+		CstmrCdtTrfInitn: {
+			GrpHdr: {
+				CreDtTm,
+				CtrlSum,
+				InitgPty: {
+					PstlAdr: {
+						Ctry
+					},
+					Nm
+				},
+				NbOfTxs,
+				MsgId
+			},
+			PmtInf: {
+				"BtchBookg": BtchBookg,
+				"CdtTrfTxInf": [
+					{
+						"Cdtr": {
+							"Nm":  creatorName
+						},
+						"CdtrAgt": {
+							"FinInstnId": {
+								"BICFI": financialInit
+							}
+						},
+						"CdtrAcct": {
+							"Id": {
+								"IBAN": creditorAccount
+							}
+						},
+						"PmtId": {
+							"EndToEndId": paymentID
+						},
+						"Amt": {
+							"InstdAmt": {
+								"#text": account,
+								"-Ccy": "EUR"
+							}
+						},
+						"RmtInf": {
+							"Ustrd": transcationMessage
+						}
+					}
+				],
 
-                    "PmtTpInf": {
-                        "CtgyPurp": {
-                            "Cd": categoryPurpose
-                        },
+				"PmtTpInf": {
+					"CtgyPurp": {
+						"Cd": categoryPurpose
+					},
 
-                        "SvcLvl": {
-                            "Cd": serviceLevel
-                        }
-                    },
+					"SvcLvl": {
+						"Cd": serviceLevel
+					}
+				},
 
-                    "DbtrAcct": {
-                        "Id": {
-                            "IBAN": debitorAccount
-                        }
-                    },
+				"DbtrAcct": {
+					"Id": {
+						"IBAN": debitorAccount
+					}
+				},
 
-                    "ReqdExctnDt": requiredExedate,
+				"ReqdExctnDt": requiredExedate,
 
-                    "DbtrAgt": {
-                        "FinInstnId": {
-                            "BICFI": debitorInstId
-                        }
-                    },
+				"DbtrAgt": {
+					"FinInstnId": {
+						"BICFI": debitorInstId
+					}
+				},
 
-                    "ChrgBr": chargeInfo,
+				"ChrgBr": chargeInfo,
 
-                    "PmtInfId": paymentInformationID,
+				"PmtInfId": paymentInformationID,
 
-                    "CtrlSum": controlSum,
+				"CtrlSum": controlSum,
 
-                    "Dbtr": {
-                        "PstlAdr": {
-                            "Ctry": debitorCountry
-                        },
+				"Dbtr": {
+					"PstlAdr": {
+						"Ctry": debitorCountry
+					},
 
-                        "Nm": debitorName
-                    },
+					"Nm": debitorName
+				},
 
-                    "NbOfTxs": paymentNoOfTranscation,
+				"NbOfTxs": paymentNoOfTranscation,
 
-                    "PmtMtd": paymentMethods
-                }
-            }
-        }
-    }
+				"PmtMtd": paymentMethods
+			}
+		}
+	}		}
+		}
+        
+    
 }
 
 export const postQuery = async (payload) => {

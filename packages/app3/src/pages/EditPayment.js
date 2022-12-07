@@ -18,7 +18,7 @@ import { CreditTransferDetailsComponent } from '../components/CreditTransferDeta
 import { getQuery, postQuery, convertDateToIso, convertIsoDateToLocal } from '../services';
 import { appState } from '../recoils/atoms';
 import { useNavigate } from "react-router-dom";
-
+import { InputLabelReadonlyField } from "../components/InputLabelReadonlyField";
 
 
 export const EditPayment = () => {
@@ -76,7 +76,7 @@ export const EditPayment = () => {
                         <InputLabelField label="Number of Transactions" type="number" id="NbOfTxs" { ...register('NbOfTxs', { value: appDefaultData.NbOfTxs }) } placeholder="" />
                     </Col>
                     <Col md={ 6 }>
-                        <InputLabelField label="Transaction Message ID" id="MsgId" { ...register('MsgId', { value: appDefaultData.MsgId }) } placeholder="" errors="ere" />
+                        <InputLabelReadonlyField label="Transaction Message ID" id="MsgId" { ...register('MsgId', { value: appDefaultData.MsgId }) } placeholder="" errors="" />
                     </Col>
                 </Row>
             </Fieldset>
