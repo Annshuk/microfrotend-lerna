@@ -12,7 +12,7 @@ import {
 import { InputLabelReadonlyField } from "../components/InputLabelReadonlyField";
 import { Heading } from '../components/Typography/Heading';
 import { Fieldset } from '../components/Fieldset';
-import { Checkbox } from '../components/Checkbox';
+import { CheckboxReadonly } from '../components/CheckboxReadonly';
 import { Loader } from '../components/Loader';
 import { CreditTransferDetailsComponent } from '../components/CreditTransferDetailsComponent';
 
@@ -90,7 +90,7 @@ export const ViewAndConfirmPayment = () => {
 			<Fieldset >
                 <Heading title="Credit Transfer Details" variant='h2' />
                 <Row>
-                    <InputLabelReadonlyField label="Batch Booking"  { ...register('BtchBookg') } id="BtchBookg" name="BtchBookg" type="checkbox" />
+                    <CheckboxReadonly label="Batch Booking" checked={appDefaultData.BtchBookg}   { ...register('BtchBookg') } id="BtchBookg" name="BtchBookg" />
                 </Row>
                 <Row>
                     <Col md={ 6 }>

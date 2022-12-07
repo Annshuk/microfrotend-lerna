@@ -86,7 +86,7 @@ export const EditPayment = () => {
 			<Fieldset >
                 <Heading title="Credit Transfer Details" variant='h2' />
                 <Row>
-                    <Checkbox label="Batch Booking"  { ...register('BtchBookg') } id="BtchBookg" name="BtchBookg" />
+                    <Checkbox label="Batch Booking" checked={appDefaultData.BtchBookg}  { ...register('BtchBookg') } id="BtchBookg" name="BtchBookg" />
                 </Row>
                 <Row>
                     <Col md={ 6 }>

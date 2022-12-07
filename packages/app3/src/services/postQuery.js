@@ -10,23 +10,25 @@ const makePayload = ({
     MsgId = "unique-Message-ID-1799566",
     BtchBookg = false,
     creatorName = "Creditor Name",
-    financialInit = "SPUEUS2UXXX",
-    creditorAccount = "DE21500500009876543210",
-    paymentID = "OriginatorID1234",
-    account = "2543.44",
-    transcationMessage = "Unstructured Remittance Information",
-    categoryPurpose = "SAL",
-    serviceLevel = "",
-    debitorAccount = "",
-    requiredExedate = "",
-    debitorInstId = "",
-    chargeInfo = "",
-    paymentInformationID = "",
-    controlSum = "",
-    debitorCountry = "",
-    debitorName = "",
-    paymentNoOfTranscation = "",
-    paymentMethods = "" }) => {
+	financialInit = "SPUEUS2UXXX",
+	creditorAccount = "DE21500500009876543210",
+	paymentID = "OriginatorID1234",
+	account ="2543.44",
+	transcationMessage = "Unstructured Remittance Information",
+	categoryPurpose = "SAL",
+	serviceLevel = "SEPA",
+	debitorAccount = "DE87200500001234567890",
+	requiredExedate = "2010-11-25",
+	debitorInstId = "BANKUSFFXXX",
+	chargeInfo = "SLEV",
+	paymentInformationID = "Payment-Information-ID-48133",
+	controlSum = "1500.00",
+	debitorCountry = "India",
+	debitorName = "John",
+	paymentNoOfTranscation = 2,
+	paymentMethods = "TRF" 
+	}) => {
+		
     return {
         Document: {
             CstmrCdtTrfInitn: {
@@ -43,7 +45,7 @@ const makePayload = ({
                     MsgId
                 },
                 PmtInf: {
-                    BtchBookg: BtchBookg,
+                    "BtchBookg": BtchBookg,
                     "CdtTrfTxInf": [
                         {
                             "Cdtr": {
