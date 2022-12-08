@@ -15,6 +15,7 @@ import { Fieldset } from '../components/Fieldset';
 import { CheckboxReadonly } from '../components/CheckboxReadonly';
 import { Loader } from '../components/Loader';
 import { SuccessNotification } from '../components/Notification';
+import { FailureNotification } from '../components/Notification';
 import { CreditTransferDetailsComponent } from '../components/CreditTransferDetailsComponent';
 
 import { getQuery, postQuery, convertDateToIso, convertIsoDateToLocal } from '../services';
@@ -23,7 +24,7 @@ import { useNavigate } from "react-router-dom";
 
 
 export const ViewAndConfirmPayment = () => {
-		const navigate = useNavigate();
+	const navigate = useNavigate();
 	const [appDefaultData, setAppDefaultData] = useRecoilState(appState);
 	
 	console.log("updated value", appDefaultData);	
@@ -32,18 +33,26 @@ export const ViewAndConfirmPayment = () => {
     const formProps = useForm({ defaultValues: appDefaultData });		
     const { control, handleSubmit, register } = formProps;			
 
-    const { mutate , isLoading ,isIdle , isError, isSuccess , data } = useMutation(postQuery);	
+    const handleOnSuccess = (data, variables, context) => {
+         console.warn("handleOnSuccess", data, variables, context);
+    };
+    const handleOnError = (data, variables, context) => {
+        console.warn("handleOnError", data, variables, context);
+    };
+
+    //initilizing the post query hander for calling post api
+    const { mutate , isLoading ,isIdle , isError, isSuccess , data } = useMutation(postQuery, {
+                                                                                                onSuccess:handleOnSuccess,
+                                                                                                onError: handleOnError,
+                                                                                            });	
+
+   
+
     const onSubmit = (formValue) => {
         console.warn("postData", formValue);
 		formValue.CreDtTm = convertDateToIso(formValue.CreDtTm);
-		
-        //mutate once all valued filled
+		//mutate once all valued filled
         mutate(formValue);
-		
-		console.log("mutate.isLoading => ", isLoading );
-		console.log("mutate.isIdle => ", isIdle );
-		console.log("mutate.isError => ", isError );
-		console.log("mutate.isSuccess  => ", isSuccess  );
     }
 	
    const handleBack = (formValue) => {		
@@ -52,15 +61,11 @@ export const ViewAndConfirmPayment = () => {
 
     return <Box as={ Form } py="20px">
 	
-        { isError && <Alert color="danger">
-						Payment gateway error... 
-					</Alert> 
+        { isError && <FailureNotification modal={true}></FailureNotification> 
 		}
-		{ isSuccess && <SuccessNotification modal={true}></SuccessNotification> 
+		{ isSuccess &&  <SuccessNotification modal={true}></SuccessNotification> 
 		}
-		
-		
-		
+	
         <FormProvider { ...formProps }>
             <Fieldset>
                 <Heading title="Customer Credit Transfer Details" variant='h1' />

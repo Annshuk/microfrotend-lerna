@@ -126,6 +126,7 @@ const makePayload = ({
     
 }
 
+/* Async code
 export const postQuery = async (payload) => {
     const data = makePayload(payload)
     try {
@@ -135,4 +136,10 @@ export const postQuery = async (payload) => {
     } catch (error) {
         return new Error(error)
     }
+}*/
+
+
+export const postQuery = (payload) => {
+    const data = makePayload(payload)
+    return axios.post('https://ja4d9gh6aj.execute-api.us-west-2.amazonaws.com/Dev1/jsonconductor', data);
 }
