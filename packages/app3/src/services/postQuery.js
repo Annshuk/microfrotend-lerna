@@ -32,95 +32,96 @@ const makePayload = ({
     return {
 			"Body": {	
 			  Document: {
-		CstmrCdtTrfInitn: {
-			GrpHdr: {
-				CreDtTm,
-				CtrlSum,
-				InitgPty: {
-					PstlAdr: {
-						Ctry
-					},
-					Nm
-				},
-				NbOfTxs,
-				MsgId
-			},
-			PmtInf: {
-				"BtchBookg": BtchBookg,
-				"CdtTrfTxInf": [
-					{
-						"Cdtr": {
-							"Nm":  creatorName
+				CstmrCdtTrfInitn: {
+					GrpHdr: {
+						CreDtTm,
+						CtrlSum,
+						InitgPty: {
+							PstlAdr: {
+								Ctry
+							},
+							Nm
 						},
-						"CdtrAgt": {
-							"FinInstnId": {
-								"BICFI": financialInit
+						NbOfTxs,
+						MsgId
+					},
+					PmtInf: {
+						"BtchBookg": BtchBookg,
+						"CdtTrfTxInf": [
+							{
+								"Cdtr": {
+									"Nm":  creatorName
+								},
+								"CdtrAgt": {
+									"FinInstnId": {
+										"BICFI": financialInit
+									}
+								},
+								"CdtrAcct": {
+									"Id": {
+										"IBAN": creditorAccount
+									}
+								},
+								"PmtId": {
+									"EndToEndId": paymentID
+								},
+								"Amt": {
+									"InstdAmt": {
+										"#text": account,
+										"-Ccy": "EUR"
+									}
+								},
+								"RmtInf": {
+									"Ustrd": transcationMessage
+								}
+							}
+						],
+
+						"PmtTpInf": {
+							"CtgyPurp": {
+								"Cd": categoryPurpose
+							},
+
+							"SvcLvl": {
+								"Cd": serviceLevel
 							}
 						},
-						"CdtrAcct": {
+
+						"DbtrAcct": {
 							"Id": {
-								"IBAN": creditorAccount
+								"IBAN": debitorAccount
 							}
 						},
-						"PmtId": {
-							"EndToEndId": paymentID
-						},
-						"Amt": {
-							"InstdAmt": {
-								"#text": account,
-								"-Ccy": "EUR"
+
+						"ReqdExctnDt": requiredExedate,
+
+						"DbtrAgt": {
+							"FinInstnId": {
+								"BICFI": debitorInstId
 							}
 						},
-						"RmtInf": {
-							"Ustrd": transcationMessage
-						}
+
+						"ChrgBr": chargeInfo,
+
+						"PmtInfId": paymentInformationID,
+
+						"CtrlSum": controlSum,
+
+						"Dbtr": {
+							"PstlAdr": {
+								"Ctry": debitorCountry
+							},
+
+							"Nm": debitorName
+						},
+
+						"NbOfTxs": paymentNoOfTranscation,
+
+						"PmtMtd": paymentMethods
 					}
-				],
-
-				"PmtTpInf": {
-					"CtgyPurp": {
-						"Cd": categoryPurpose
-					},
-
-					"SvcLvl": {
-						"Cd": serviceLevel
-					}
-				},
-
-				"DbtrAcct": {
-					"Id": {
-						"IBAN": debitorAccount
-					}
-				},
-
-				"ReqdExctnDt": requiredExedate,
-
-				"DbtrAgt": {
-					"FinInstnId": {
-						"BICFI": debitorInstId
-					}
-				},
-
-				"ChrgBr": chargeInfo,
-
-				"PmtInfId": paymentInformationID,
-
-				"CtrlSum": controlSum,
-
-				"Dbtr": {
-					"PstlAdr": {
-						"Ctry": debitorCountry
-					},
-
-					"Nm": debitorName
-				},
-
-				"NbOfTxs": paymentNoOfTranscation,
-
-				"PmtMtd": paymentMethods
-			}
+				}
+			}		
 		}
-	}		}
 		}
         
     

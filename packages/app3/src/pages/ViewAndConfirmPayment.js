@@ -16,7 +16,6 @@ import { CheckboxReadonly } from '../components/CheckboxReadonly';
 import { Loader } from '../components/Loader';
 import { SuccessNotification } from '../components/Notification';
 import { FailureNotification } from '../components/Notification';
-import { CreditTransferDetailsComponent } from '../components/CreditTransferDetailsComponent';
 
 import { getQuery, postQuery, convertDateToIso, convertIsoDateToLocal } from '../services';
 import { appState } from '../recoils/atoms';
@@ -95,8 +94,7 @@ export const ViewAndConfirmPayment = () => {
                 </Row>
             </Fieldset>
 
-            <Heading title="Payment Information" variant='h1' />            
-			
+            <Heading title="Payment Information" variant='h1' /> 
 			<Fieldset>
                 <Heading title="Credit Transfer Details" variant='h2' />
                 <Row>
