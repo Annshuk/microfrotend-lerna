@@ -18,9 +18,10 @@ const queryClient = new QueryClient({
 const App = () => {
 	return (
 		<QueryClientProvider client={ queryClient }>
-			<RecoilRoot><Container>
-				<EditPayment />
-			</Container>
+			<RecoilRoot>
+				<Container>
+					<EditPayment />
+				</Container>
 			</RecoilRoot>
 
 		</QueryClientProvider>

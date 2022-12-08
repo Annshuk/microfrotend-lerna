@@ -45,6 +45,5 @@ const normalizeValues = ({ Document }) => {
 export const getQuery = async () => {
     const request = await axios.get('mock.json');
 
-
     return normalizeValues(request.data);
 }
