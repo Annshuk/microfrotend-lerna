@@ -2,163 +2,135 @@
 import axios from 'axios';
 
 const makePayload = ({
-    CreDtTm = "2022-09-14T09:30:47.000Z",
+    CreDtTm = "2022-09-14T09:30",
     CtrlSum = "50000",
     Ctry = "India",
     Nm = "Initiators Name",
     NbOfTxs = 2,
     MsgId = "unique-Message-ID-1799566",
-    btchBookg = "true",
-    creatorName = "",
-    financialInit = "",
-    creditorAccount = "",
-    paymentID = "",
-    account = "",
-    transcationMessage = "",
-    categoryPurpose = "",
-    serviceLevel = "",
-    debitorAccount = "",
-    requiredExedate = "",
-    debitorInstId = "",
-    chargeInfo = "",
-    paymentInformationID = "",
-    controlSum = "",
-    debitorCountry = "",
-    debitorName = "",
-    paymentNoOfTranscation = "",
-    paymentMethods = "" }) => {
+    BtchBookg = true,
+    creatorName = "Creditor Name",
+	financialInit = "SPUEUS2UXXX",
+	creditorAccount = "DE21500500009876543210",
+	paymentID = "OriginatorID1234",
+	account ="2543.44",
+	transcationMessage = "Unstructured Remittance Information",
+	categoryPurpose = "SAL",
+	serviceLevel = "SEPA",
+	debitorAccount = "DE87200500001234567890",
+	requiredExedate = "2010-11-25",
+	debitorInstId = "BANKUSFFXXX",
+	chargeInfo = "SLEV",
+	paymentInformationID = "Payment-Information-ID-48133",
+	controlSum = "1500.00",
+	debitorCountry = "India",
+	debitorName = "John",
+	paymentNoOfTranscation = 2,
+	paymentMethods = "TRF" 
+	}) => {
+		
     return {
-        Document: {
-            CstmrCdtTrfInitn: {
-                GrpHdr: {
-                    CreDtTm,
-                    CtrlSum,
-                    InitgPty: {
-                        PstlAdr: {
-                            Ctry
-                        },
-                        Nm
-                    },
-                    NbOfTxs,
-                    MsgId
-                },
-                PmtInf: {
-                    BtchBookg: btchBookg,
-                    "CdtTrfTxInf": [
-                        {
-                            "Cdtr": {
-                                "Nm": "Creditor Name"
-                            },
-                            "CdtrAgt": {
-                                "FinInstnId": {
-                                    "BICFI": "SPUEUS2UXXX"
-                                }
-                            },
-                            "CdtrAcct": {
-                                "Id": {
-                                    "IBAN": "DE21500500009876543210"
-                                }
-                            },
-                            "PmtId": {
-                                "EndToEndId": "OriginatorID1234"
-                            },
-                            "Amt": {
-                                "InstdAmt": {
-                                    "#text": "2543.44",
-                                    "-Ccy": "EUR"
-                                }
-                            },
-                            "RmtInf": {
-                                "Ustrd": "Unstructured Remittance Information"
-                            }
-                        },
+			"Body": {	
+			  Document: {
+		CstmrCdtTrfInitn: {
+			GrpHdr: {
+				CreDtTm,
+				CtrlSum,
+				InitgPty: {
+					PstlAdr: {
+						Ctry
+					},
+					Nm
+				},
+				NbOfTxs,
+				MsgId
+			},
+			PmtInf: {
+				"BtchBookg": BtchBookg,
+				"CdtTrfTxInf": [
+					{
+						"Cdtr": {
+							"Nm":  creatorName
+						},
+						"CdtrAgt": {
+							"FinInstnId": {
+								"BICFI": financialInit
+							}
+						},
+						"CdtrAcct": {
+							"Id": {
+								"IBAN": creditorAccount
+							}
+						},
+						"PmtId": {
+							"EndToEndId": paymentID
+						},
+						"Amt": {
+							"InstdAmt": {
+								"#text": account,
+								"-Ccy": "EUR"
+							}
+						},
+						"RmtInf": {
+							"Ustrd": transcationMessage
+						}
+					}
+				],
 
-                        {
-                            "Cdtr": {
-                                "Nm": "Other Creditor Name"
-                            },
+				"PmtTpInf": {
+					"CtgyPurp": {
+						"Cd": categoryPurpose
+					},
 
-                            "CdtrAgt": {
-                                "FinInstnId": {
-                                    "BICFI": "SPUEUS2UXXX"
-                                }
-                            },
+					"SvcLvl": {
+						"Cd": serviceLevel
+					}
+				},
 
-                            "CdtrAcct": {
-                                "Id": {
-                                    "IBAN": "DE21500500001234567897"
-                                }
-                            },
+				"DbtrAcct": {
+					"Id": {
+						"IBAN": debitorAccount
+					}
+				},
 
-                            "PmtId": {
-                                "EndToEndId": "OriginatorID1235"
-                            },
+				"ReqdExctnDt": requiredExedate,
 
-                            "Amt": {
-                                "InstdAmt": {
-                                    "#text": "112.72",
+				"DbtrAgt": {
+					"FinInstnId": {
+						"BICFI": debitorInstId
+					}
+				},
 
-                                    "-Ccy": "EUR"
-                                }
-                            },
+				"ChrgBr": chargeInfo,
 
-                            "RmtInf": {
-                                "Ustrd": "Unstructured Remittance Information"
-                            }
-                        }
-                    ],
+				"PmtInfId": paymentInformationID,
 
-                    "PmtTpInf": {
-                        "CtgyPurp": {
-                            "Cd": "SAL"
-                        },
+				"CtrlSum": controlSum,
 
-                        "SvcLvl": {
-                            "Cd": "SEPA"
-                        }
-                    },
+				"Dbtr": {
+					"PstlAdr": {
+						"Ctry": debitorCountry
+					},
 
-                    "DbtrAcct": {
-                        "Id": {
-                            "IBAN": "DE87200500001234567890"
-                        }
-                    },
+					"Nm": debitorName
+				},
 
-                    "ReqdExctnDt": "2010-11-25",
+				"NbOfTxs": paymentNoOfTranscation,
 
-                    "DbtrAgt": {
-                        "FinInstnId": {
-                            "BICFI": "BANKUSFFXXX"
-                        }
-                    },
-
-                    "ChrgBr": "SLEV",
-
-                    "PmtInfId": "Payment-Information-ID-48133",
-
-                    "CtrlSum": "1500.00",
-
-                    "Dbtr": {
-                        "PstlAdr": {
-                            "Ctry": "India"
-                        },
-
-                        "Nm": "John"
-                    },
-
-                    "NbOfTxs": "2",
-
-                    "PmtMtd": "TRF"
-                }
-            }
-        }
-    }
+				"PmtMtd": paymentMethods
+			}
+		}
+	}		}
+		}
+        
+    
 }
 
 export const postQuery = async (payload) => {
     const data = makePayload(payload)
     try {
-        const request = await axios.post('http://ec2-18-236-230-212.us-west-2.compute.amazonaws.com:5000/api/workflow/payment_orchestration', data);
+        //const request = await axios.post('http://ec2-18-236-230-212.us-west-2.compute.amazonaws.com:5000/api/workflow/payment_orchestration', data);
+        const request = await axios.post('https://ja4d9gh6aj.execute-api.us-west-2.amazonaws.com/Dev1/jsonconductor', data);
         return request
     } catch (error) {
         return new Error(error)

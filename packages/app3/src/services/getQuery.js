@@ -36,8 +36,13 @@ const normalizeValues = ({ Document }) => {
         ...GrpHdr.InitgPty,
         ...PmtInf
     }
+	
+	console.log('makeDefaultValues:', makeDefaultValues);
+	
 
-    return makeDefaultValues
+    //return Document;
+    return makeDefaultValues;
+	
 }
 
 
@@ -48,3 +53,5 @@ export const getQuery = async () => {
 
     return normalizeValues(request.data);
 }
+
+//use reduce

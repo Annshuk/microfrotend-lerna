@@ -2,7 +2,7 @@ export const makePayload = () => ({
     "Document": {
         "CstmrCdtTrfInitn": {
             "GrpHdr": {
-                "CreDtTm": "2022-09-14T09:30:47.000Z",
+                "CreDtTm": "2022-09-14T09:30",
                 "CtrlSum": "50001",
                 "InitgPty": {
                     "PstlAdr": {
@@ -14,7 +14,7 @@ export const makePayload = () => ({
                 "MsgId": "Message-ID-1799566"
             },
             "PmtInf": {
-                "BtchBookg": "true",
+                "BtchBookg": true,
                 "CdtTrfTxInf": [
                     {
                         "Cdtr": {

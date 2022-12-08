@@ -7,7 +7,7 @@ import { useState } from 'react';
  * input Checkbox field
  * 
  */
-export const Checkbox = forwardRef(({ label, name, id, errors, checked, ...rest }, ref) => {
+export const CheckboxReadonly = forwardRef(({ label, name, id, errors, checked, ...rest }, ref) => {
 	
     return <FormGroup check inline>
         <Label
@@ -17,15 +17,14 @@ export const Checkbox = forwardRef(({ label, name, id, errors, checked, ...rest 
 
         </Label>
         <Col sm={ 10 } className="p-2">
-            
-			<Input
+            <Input
                 innerRef={ ref }
                 name={ name }
                 id={ id }
                 type="checkbox"
+				disabled
                 { ...rest }
-            />
-			
+            />			
             { label }
 
             { errors && <FormFeedback>

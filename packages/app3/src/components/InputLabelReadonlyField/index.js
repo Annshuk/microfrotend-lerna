@@ -3,18 +3,19 @@ import { Input, Label, FormGroup, Col, FormFeedback } from 'reactstrap'
 
 
 /**
- * InputLabelField
+ * InputLabelReadonlyField
  * input label field
  * 
  */
-export const InputLabelField = forwardRef(({ name, label, id, errors, type="text", ...rest }, ref) => {
+export const InputLabelReadonlyField = forwardRef(({ name, label, id, errors, ...rest }, ref) => {
     return (<FormGroup row>
         <Label for={ id }>{ label }</Label>
         <Col>
             <Input
-                type={type}
+                type="text"
                 name={ name }
                 innerRef={ ref }
+				readOnly
                 id={ id }
                 { ...rest }
             />
