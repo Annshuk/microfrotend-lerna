@@ -1,6 +1,6 @@
-import { Form, Col, Row, Button, Alert } from 'reactstrap';
+import { Form, Col, Row, Button } from 'reactstrap';
 import { useForm, FormProvider } from 'react-hook-form';
-import { useQuery, useMutation } from 'react-query';
+
 import { Box, Flex } from 'rebass';
 
 import {
@@ -11,9 +11,8 @@ import { InputLabelField } from "../components/InputLabelField";
 import { Heading } from '../components/Typography/Heading';
 import { Fieldset } from '../components/Fieldset';
 import { Checkbox } from '../components/Checkbox';
-import { CreditTransferDetailsComponent } from '../components/CreditTransferDetailsComponent';
 
-import { getQuery, postQuery, convertDateToIso } from '../services';
+import { convertDateToIso } from '../services';
 import { appState } from '../recoils/atoms';
 import { useNavigate } from "react-router-dom";
 import { InputLabelReadonlyField } from "../components/InputLabelReadonlyField";
@@ -23,7 +22,6 @@ export const EditPayment = () => {
 
     const navigate = useNavigate();
     const [appDefauls, setFormState] = useRecoilState(appState);
-    const { data: payments } = useQuery('payments', getQuery);
 
     const formProps = useForm({ defaultValues: appDefauls });
 
