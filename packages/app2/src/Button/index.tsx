@@ -1,6 +1,15 @@
 import { FC } from "react";
 import styled from "styled-components";
+
 import "./style.scss";
+
+const StyledButton = styled.button`
+  font-family: JeanSunHo;
+  color: red;
+  font-size: 50px;
+  height: 80px;
+`;
+
 
 const Button: FC<{ className?: string }> = ({ className = "" }) => (
   <StyledButton className={"funny-button " + className}>
@@ -9,9 +18,3 @@ const Button: FC<{ className?: string }> = ({ className = "" }) => (
 );
 export default Button;
 
-const StyledButton = styled.button`
-  font-family: JeanSunHo;
-  color: red;
-  font-size: 50px;
-  height: 80px;
-`;

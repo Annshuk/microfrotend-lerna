@@ -16,11 +16,11 @@ module.exports = {
     ...deps,
     react: {
       singleton: true,
-      requiredVersion: deps["react"],
+      requiredVersion: deps[ "react" ],
     },
     "react-dom": {
       singleton: true,
-      requiredVersion: deps["react-dom"],
+      requiredVersion: deps[ "react-dom" ],
     },
   },
 };
