@@ -4,7 +4,7 @@ console.log(process.env.ROOT_PATH_MODE);
 module.exports = {
   name: "app1",
   exposes: {
-    "./App": "./src/App",
+    "./RootRouter": "./src/RootRouter",
   },
   filename: "remoteEntry.js",
   shared: {

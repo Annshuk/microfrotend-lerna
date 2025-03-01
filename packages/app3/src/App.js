@@ -1,14 +1,15 @@
-import { Link, BrowserRouter } from "react-router-dom";
+import { Suspense } from 'react'
+import { Link } from "react-router-dom";
 
-const App = () => <BrowserRouter basename="/">
+const App = () => <Suspense fallback="loading">
     <div id="sidebar" className="sidebar">
         <nav>
             <ul>
                 <li>
-                    <Link to="app2">App2</Link>
+                    <Link to="app2" relative="path">App2</Link>
                 </li>
             </ul>
         </nav>
     </div>
-</BrowserRouter>
+</Suspense>
 export default App;

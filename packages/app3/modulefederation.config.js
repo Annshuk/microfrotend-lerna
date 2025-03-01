@@ -6,6 +6,9 @@ module.exports = {
     "./App": "./src/App",
   },
   filename: "remoteEntry.js",
+  remotes: {
+    app1: "app1@http://localhost:3000/remoteEntry.js",
+  },
   shared: {
     ...deps,
     react: {
