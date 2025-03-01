@@ -1,8 +1,6 @@
 import { FC } from "react";
 import styled from "styled-components";
 
-import "./style.scss";
-
 const StyledButton = styled.button`
   font-family: JeanSunHo;
   color: red;

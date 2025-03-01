@@ -8,7 +8,15 @@ module.exports = {
   ],
   webpack: {
     plugins: {
-      remove: ["ModuleScopePlugin"],
+      remove: [ "ModuleScopePlugin" ],
     },
+    rules: [
+      {
+        test: /\.m?js$/,
+        resolve: {
+          fullySpecified: false,
+        },
+      },
+    ]
   },
 };

@@ -1,15 +1,14 @@
-import { PDFViewer } from '@react-pdf/renderer';
+import { Link, BrowserRouter } from "react-router-dom";
 
-import Button from "./Button";
-import { ReactPdf } from './ReactPdf/ReactPdf'
-
-const App = () =>
-  <>
-    <Button />
-    <PDFViewer>
-      <ReactPdf />
-    </PDFViewer>
-  </>;
-
-
+const App = () => <BrowserRouter basename="/">
+    <div id="sidebar" className="sidebar">
+        <nav>
+            <ul>
+                <li>
+                    <Link to="app2">App2</Link>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</BrowserRouter>
 export default App;
