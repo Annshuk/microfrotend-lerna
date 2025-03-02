@@ -1,8 +1,7 @@
 import { Suspense } from 'react'
-import { BrowserRouter, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const App = () => <Suspense fallback="loading">
-
     <div id="sidebar" className="sidebar">
         <nav>
             <ul>
@@ -15,6 +14,5 @@ const App = () => <Suspense fallback="loading">
             </ul>
         </nav>
     </div>
-
 </Suspense>
 export default App;
