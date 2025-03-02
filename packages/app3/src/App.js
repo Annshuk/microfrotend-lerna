@@ -7,7 +7,10 @@ const App = () => <Suspense fallback="loading">
         <nav>
             <ul>
                 <li>
-                    <Link to="app2" relative="path">App2</Link>
+                    <Link to="app2">App2</Link>
+                </li>
+                <li>
+                    <Link to="app4">App4</Link>
                 </li>
             </ul>
         </nav>
