@@ -1,7 +1,5 @@
-import Button from "./Button";
-
 function App() {
-  return <Button />;
+  return <>Hello from App2, a sample component</>;
 }
 
 export default App;
