@@ -46,7 +46,7 @@ export const fetchRemote = (url, remoteName) =>
                         return (window)[ remoteName ].init(arg);
                     } catch (e)
                     {
-                        console.error(`Failed to initialize remote: ${ remoteName }`);
+                        console.error(`Failed to initialize remote: ${e} ${ remoteName }`);
                         reject(e);
                     }
                 },

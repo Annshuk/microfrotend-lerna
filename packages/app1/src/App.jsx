@@ -17,14 +17,14 @@ const  App = () => {
 
       <Flex justifyDirection="space-between">
       <RootRouter>
-        <Aside/>
+      <Aside/>
         <Main as="main">
         <Routes>
           <Route path="/app2/*" element={<RemoteApp name='app2'  url="http://localhost:3002/remoteEntry.js"  module="App" />}/>
           <Route path="/app4/*" element={<RemoteApp name='app4'  url="http://localhost:3004/remoteEntry.js"  module="App" />}/>
         </Routes>
         </Main>
-        </RootRouter>
+      </RootRouter>
       </Flex>
     </Layout>)
   }
