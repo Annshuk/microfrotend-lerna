@@ -9,7 +9,6 @@ const App = () => {
     <Route path="/*" element={<Dashboard/>}/>
     <Route  path="/inner/" element={<Inner/>}/>
     <Route path="/inner/*" element={<Navigate to='/app4'/>} />
-    
   </Routes>
   </>
 }
