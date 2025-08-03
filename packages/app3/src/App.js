@@ -1,5 +1,5 @@
 import { Suspense } from 'react'
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 const App = () => <Suspense fallback="loading">
@@ -7,10 +7,10 @@ const App = () => <Suspense fallback="loading">
         <nav>
             <ul>
                 <li>
-                    <Link to="app2">App2</Link>
+                    <NavLink to="app2">App2</NavLink>
                 </li>
                 <li>
-                    <Link to="app4">App4</Link>
+                    <NavLink to="app4">App4</NavLink>
                 </li>
             </ul>
         </nav>
