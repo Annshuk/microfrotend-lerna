@@ -32,7 +32,7 @@ export default {
 			exclude: 'node_modules/**',
 		}),
 		image(),
-		//  terser(),
+		terser(),
 	],
 	external: [...new Set([/@babel\/runtime/, ...dependencies])],
 };
