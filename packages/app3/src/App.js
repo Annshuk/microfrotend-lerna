@@ -15,6 +15,6 @@ const App = () => <Suspense fallback="loading">
             </ul>
         </nav>
     </div>
-
 </Suspense>
+
 export default App;

@@ -18,8 +18,6 @@ const LeftSide = styled(Flex)`
     ul li a.active{text-decoration:underline; background-color:grey; color:white}
 }`
 
-
-
 export const Aside = () => <LeftSide flexDirection="column" as="aside">
-    <RemoteApp name='app3' url='http://localhost:3003/remoteEntry.js' module="App" />
+    <RemoteApp name='app3' url='http://localhost:3003/remoteEntry.js' />
 </LeftSide>
